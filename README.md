@@ -22,13 +22,13 @@ ___
 
 
 
-      # MariaDB 10.5 CentOS repository list - created 2021-04-12 21:30 UTC
-      # http://downloads.mariadb.org/mariadb/repositories/
+      \\#MariaDB 10.5 CentOS repository list - created 2021-04-12 21:30 UTC
+      \\#http://downloads.mariadb.org/mariadb/repositories/  
       [mariadb]
       name = MariaDB
-      baseurl = http://yum.mariadb.org/10.5/centos8-amd64
+      baseurl = http://yum.mariadb.org/10.5/centos8-amd64  
       module_hotfixes=1
-      gpgkey=https://yum.mariadb.org/RPM-GPG-KEY-MariaDB
+      gpgkey=https://yum.mariadb.org/RPM-GPG-KEY-MariaDB  
       gpgcheck=1
 
 Устанавливаем MariaDB-server
