@@ -173,4 +173,4 @@ ___
 
 Теперь можно пройти в браузере по ip адресу  и откроется первая страница установщика Zabbix Server 5.
 ___
-![первая страница установщика Zabbix Server 5](Images/zabbix-5-install-configure-02.png)
+![первая страница установщика Zabbix Server 5](Images/zabbix-5-install-configure-03.png)
