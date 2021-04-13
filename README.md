@@ -95,8 +95,6 @@ zcat /usr/share/doc/zabbix-server-mysql*/create.sql.gz | mysql -uzabbix -p zabbi
 ___
 
 
-
-
 ##      Настройка SELinux для zabbix server
 
 Сразу отключить SELinux на zabbix процессе, но логировать ошибки:
@@ -133,22 +131,37 @@ ___
 
 ___
 
-      vi /etc/nginx/conf.d/zabbix.conf
+Теперь подготовим web сервер. Для этого открываем конфиг nginx /etc/nginx/conf.d/zabbix.conf и устанавливаем там 2 параметра:
+
+    vi /etc/nginx/conf.d/zabbix.conf
 
       listen          80 default_server;
       server_name     zablinrv
 
-___
+Указываем свое имя виртуального хоста (zablinrv) для zabbix сервера. Если хотим подключаться не только по доменному имени, но и по ip адресу к web интерфейсу zabbix, необходимо в помимо listen 80, добавить директиву default_server (listen          80 default_server).
+Одновременно с этим удаляем эту же директиву в основном конфиге nginx - /etc/nginx/nginx.conf. Вместо:
 
+    listen 80 default_server;
 
-      vi /etc/nginx/nginx.conf
+Сделать просто:
 
-      listen          80
+    listen          80
 
-___
-
+в завершении редактируем конфиг php-fpm - /etc/php-fpm.d/zabbix.conf, указывая свой часовой пояс.
 
       vi /etc/php-fpm.d/zabbix.conf
+
+      php_value[date.timezone] = Europe/Minsk
+
+Запускаем компоненты web сервера.
+
+      systemctl enable --now nginx php-fpm
+
+Теперь можно пройти в браузере по ip адресу  и откроется первая страница установщика Zabbix Server 5.
+___
+
+
+
 
 
 
